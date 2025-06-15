@@ -1,4 +1,4 @@
-<!-- index.html – Demo completo con botón que dispara el trigger POCHO_TOUR -->
+<!-- index.html – Demo con botón que dispara el trigger POCHO_TOUR -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -42,9 +42,9 @@
   <script>
     /* Inicializa el webchat con los datos de TU bot */
     window.botpressWebChat.init({
-      /* host: no se necesita; el script ya sabe su dominio */
-      botId: "fdd06645-3c09-4de0-91c1-82b6b2bc9731",
-      clientId: "134d80bf-9944-44f7-86cc-e4058ef9b693",
+      host: "https://cdn.botpress.cloud",              // dominio de la CDN
+      botId: "fdd06645-3c09-4de0-91c1-82b6b2bc9731",   // ← tu botId
+      clientId: "134d80bf-9944-44f7-86cc-e4058ef9b693",// ← tu clientId
       lazyLoad: true,
       hideWidget: false,
       showCloseButton: true,
@@ -52,11 +52,11 @@
       botName: "Pata_bot"
     });
 
-    /* Envía el evento POCHO_TOUR cuando el usuario pulsa el botón */
+    /* Envía el evento POCHO_TOUR cuando se pulsa el botón */
     function sendPochoTourEvent(){
       window.botpressWebChat.sendEvent({
         type: "POCHO_TOUR",
-        payload: {}   //  datos extra si los necesitas
+        payload: {}
       });
     }
   </script>

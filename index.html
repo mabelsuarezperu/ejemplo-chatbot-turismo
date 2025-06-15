@@ -1,77 +1,64 @@
-<!-- Indica que este documento es una página web en formato HTML5 -->
+<!-- index.html – Demo completo con botón que dispara el trigger POCHO_TOUR -->
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <!-- Configuración básica del documento -->
-  <meta charset="UTF-8" /> <!-- Permite usar tildes y caracteres en español -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Hace que se vea bien en celulares -->
-  
-  <!-- Título que aparece en la pestaña del navegador -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ejemplo de Chatbot Turístico</title>
-  
-  <!-- Estilos visuales del sitio: colores, fuente, tamaño del botón, etc. -->
+
+  <!-- Estilos básicos -->
   <style>
-    body {
-      font-family: Arial, sans-serif; /* Tipo de letra */
-      text-align: center;             /* Centra el texto y elementos */
-      padding-top: 50px;              /* Espacio arriba */
-      background-color: #f9f9f9;      /* Fondo gris muy claro */
+    body{
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background:#f9f9f9;
     }
-    button {
-      padding: 15px 25px;             /* Tamaño del botón */
-      font-size: 18px;                /* Tamaño del texto en el botón */
-      background-color: #6200ea;      /* Color morado del botón */
-      color: white;                   /* Texto blanco */
-      border: none;                   /* Sin borde */
-      border-radius: 8px;             /* Bordes redondeados */
-      cursor: pointer;                /* Cursor tipo "mano" al pasar el mouse */
+    button{
+      padding:15px 25px;
+      font-size:18px;
+      background:#6200ea;
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
     }
-    button:hover {
-      background-color: #4b00c2;      /* Color cuando pasas el mouse */
-    }
+    button:hover{background:#4b00c2;}
   </style>
 </head>
 
 <body>
-
-  <!-- Título principal que ve el usuario -->
   <h1>Ejemplo práctico de chatbot turístico</h1>
-  
-  <!-- Texto que explica qué hacer -->
   <p>Haz clic en el botón para iniciar una conversación con nuestro bot.</p>
-  
-  <!-- Botón que dispara el trigger del bot cuando se hace clic -->
+
+  <!-- Botón que envía el evento personalizado -->
   <button onclick="sendPochoTourEvent()">Chatea aquí</button>
 
-  <!-- Contenedor donde aparecerá el chat del bot -->
+  <!-- Contenedor donde se renderiza el web-chat -->
   <div id="botpress-webchat"></div>
 
-  <!-- Script que carga el Webchat desde los servidores de Botpress -->
+  <!-- Script oficial de Botpress Webchat -->
   <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-
   <script>
-    // Inicializa el Webchat con los datos de tu bot en Botpress
+    /* Inicializa el webchat con los datos de TU bot */
     window.botpressWebChat.init({
-      host: "https://cdn.botpress.cloud/webchat/v1", // Servidor del webchat
-      botId: "fdd06645-3c09-4de0-91c1-82b6b2bc9731",  // ID único del bot
-      clientId: "134d80bf-9944-44f7-86cc-e4058ef9b693", // Clave para autorizar el uso del bot
-      lazyLoad: true,             // El chat no se carga hasta que el usuario interactúe
-      hideWidget: false,          // Muestra el botón flotante del chat
-      showCloseButton: true,      // Permite cerrar el chat con una X
-      enableReset: true,          // Muestra una opción para reiniciar el chat
-      botName: "Pata_bot"         // Nombre del bot visible en la ventana de chat
+      /* host: no se necesita; el script ya sabe su dominio */
+      botId: "fdd06645-3c09-4de0-91c1-82b6b2bc9731",
+      clientId: "134d80bf-9944-44f7-86cc-e4058ef9b693",
+      lazyLoad: true,
+      hideWidget: false,
+      showCloseButton: true,
+      enableReset: true,
+      botName: "Pata_bot"
     });
 
-    // Función que se ejecuta al hacer clic en el botón
-    function sendPochoTourEvent() {
-      // Envía un evento personalizado al bot para activar un flujo específico
+    /* Envía el evento POCHO_TOUR cuando el usuario pulsa el botón */
+    function sendPochoTourEvent(){
       window.botpressWebChat.sendEvent({
-        type: "POCHO_TOUR",       // Nombre del evento que tu bot ya reconoce
-        payload: {}               // Aquí podrías enviar más datos si lo necesitas
+        type: "POCHO_TOUR",
+        payload: {}   //  datos extra si los necesitas
       });
     }
   </script>
-
 </body>
 </html>

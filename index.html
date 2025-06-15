@@ -6,23 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ejemplo de Chatbot Turístico</title>
 
-  <!-- Estilos básicos -->
   <style>
-    body{
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 50px;
-      background:#f9f9f9;
-    }
-    button{
-      padding:15px 25px;
-      font-size:18px;
-      background:#6200ea;
-      color:#fff;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-    }
+    body{font-family:Arial, sans-serif; text-align:center; padding-top:50px; background:#f9f9f9;}
+    button{padding:15px 25px; font-size:18px; background:#6200ea; color:#fff; border:none; border-radius:8px; cursor:pointer;}
     button:hover{background:#4b00c2;}
   </style>
 </head>
@@ -31,32 +17,34 @@
   <h1>Ejemplo práctico de chatbot turístico</h1>
   <p>Haz clic en el botón para iniciar una conversación con nuestro bot.</p>
 
-  <!-- Botón que envía el evento personalizado -->
   <button onclick="sendPochoTourEvent()">Chatea aquí</button>
 
-  <!-- Contenedor donde se renderiza el web-chat -->
   <div id="botpress-webchat"></div>
 
-  <!-- Script oficial de Botpress Webchat -->
+  <!-- Script oficial -->
   <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
   <script>
-    /* Inicializa el webchat con los datos de TU bot */
     window.botpressWebChat.init({
-      host: "https://cdn.botpress.cloud",              // dominio de la CDN
-      botId: "fdd06645-3c09-4de0-91c1-82b6b2bc9731",   // ← tu botId
-      clientId: "134d80bf-9944-44f7-86cc-e4058ef9b693",// ← tu clientId
-      lazyLoad: true,
-      hideWidget: false,
-      showCloseButton: true,
-      enableReset: true,
-      botName: "Pata_bot"
+      /* Rutas correctas */
+      hostUrl:      "https://cdn.botpress.cloud/webchat/v1",
+      messagingUrl: "https://messaging.botpress.cloud",
+
+      /* Credenciales de tu bot */
+      botId:    "fdd06645-3c09-4de0-91c1-82b6b2bc9731",
+      clientId: "134d80bf-9944-44f7-86cc-e4058ef9b693",
+
+      lazyLoad:true,
+      hideWidget:false,
+      showCloseButton:true,
+      enableReset:true,
+      botName:"Pata_bot"
     });
 
-    /* Envía el evento POCHO_TOUR cuando se pulsa el botón */
+    /* Envía el evento que dispara tu Trigger */
     function sendPochoTourEvent(){
       window.botpressWebChat.sendEvent({
-        type: "POCHO_TOUR",
-        payload: {}
+        type:"POCHO_TOUR",
+        payload:{}
       });
     }
   </script>
